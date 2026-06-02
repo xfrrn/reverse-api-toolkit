@@ -38,8 +38,8 @@ class ModelTranslateInterface:
         text = text.strip()
         if not text:
             raise ValueError("text cannot be empty")
-        if len(text) > 800:
-            raise ValueError("the model translation web demo limits text to 800 characters")
+        if len(text) > 1000:
+            raise ValueError("the model translation web demo limits text to 1000 characters")
 
         body, content_type = encode_multipart(
             {

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>语言列表 - 帮大忙</title>
+    <link rel="stylesheet" href="/static/assets/css/common.css" />
+    <link rel="stylesheet" href="/static/assets/css/plugin-youdao.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="/static/assets/js/plugins/youdao/languages.js" defer></script>
+  </head>
+  <body class="languages-page">
+    <aside class="sidebar" aria-label="插件分类">
+      <a class="brand" href="/"><div class="brand-mark" aria-hidden="true"></div><div><h1>帮大忙</h1><p>在线插件工具箱</p></div></a>
+      <nav class="category-list">
+        <a class="category" href="/"><i data-lucide="layout-grid"></i><span>全部</span></a>
+        <a class="category is-active" href="/?category=文本工具"><i data-lucide="file-text"></i><span>文本工具</span></a>
+      </nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar detail-topbar">
+        <a class="secondary-button" href="/plugins/youdao"><i data-lucide="arrow-left"></i><span>返回有道翻译</span></a>
+        <div class="top-actions">
+          <a class="capability-link" href="/plugins/youdao/text">普通翻译</a>
+          <a class="capability-link" href="/plugins/youdao/model">模型翻译</a>
+          <a class="capability-link is-active" href="/plugins/youdao/languages">语言列表</a>
+        </div>
+      </header>
+
+      <section class="hero-panel language-hero">
+        <div class="hero-copy">
+          <p>语言列表</p>
+          <h2>按接口能力分组查看支持语言</h2>
+        </div>
+        <div class="quick-stats"><div><strong id="textCount">-</strong><span>普通翻译语言</span></div><div><strong id="modelCount">-</strong><span>模型翻译语言</span></div><div><strong>Card</strong><span>可视化展示</span></div></div>
+      </section>
+
+      <section class="language-panel">
+        <div class="panel-title">
+          <div><p>支持语言</p><h2>语言能力清单</h2></div>
+          <button class="secondary-button" id="refreshButton" type="button"><i data-lucide="refresh-cw"></i><span>刷新</span></button>
+        </div>
+        <p class="status-text" id="statusText">正在读取语言列表...</p>
+        <div class="language-groups" id="languageGroups"></div>
+      </section>
+    </main>
+  </body>
+</html>

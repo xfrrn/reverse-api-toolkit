@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>有道翻译 - 帮大忙</title>
+    <link rel="stylesheet" href="/static/assets/css/common.css" />
+    <link rel="stylesheet" href="/static/assets/css/plugin-youdao.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="/static/assets/js/plugins/youdao-home.js" defer></script>
+  </head>
+  <body>
+    <aside class="sidebar" aria-label="插件分类">
+      <a class="brand" href="/">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <h1>帮大忙</h1>
+          <p>在线插件工具箱</p>
+        </div>
+      </a>
+      <nav class="category-list">
+        <a class="category" href="/"><i data-lucide="layout-grid"></i><span>全部</span></a>
+        <a class="category is-active" href="/?category=文本工具"><i data-lucide="file-text"></i><span>文本工具</span></a>
+      </nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar detail-topbar">
+        <a class="secondary-button" href="/">
+          <i data-lucide="arrow-left"></i>
+          <span>返回插件中心</span>
+        </a>
+        <div class="top-actions">
+          <button class="benefit-button" type="button">
+            <i data-lucide="badge-check"></i>
+            <span>有道翻译 · 文本工具</span>
+          </button>
+          <button class="avatar" type="button" title="用户中心">
+            <i data-lucide="user"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="hero-panel youdao-hero">
+        <div class="hero-copy">
+          <p>有道翻译插件</p>
+          <h2>选择一个能力进入独立页面</h2>
+        </div>
+        <div class="quick-stats" aria-label="插件能力">
+          <div><strong>普通</strong><span>短文本直译</span></div>
+          <div><strong>模型</strong><span>Lite / Pro</span></div>
+          <div><strong>语言</strong><span>支持列表</span></div>
+        </div>
+      </section>
+
+      <section class="ability-panel">
+        <div class="panel-title">
+          <div>
+            <p>能力入口</p>
+            <h2>有道翻译工具</h2>
+          </div>
+        </div>
+        <div class="ability-grid">
+          <a class="ability-card text-card" href="/plugins/youdao/text">
+            <div class="tool-badge"><span>译</span></div>
+            <div>
+              <h3>普通翻译</h3>
+              <p>适合常规短文本翻译，界面只保留语言和文本输入。</p>
+            </div>
+            <i data-lucide="chevron-right"></i>
+          </a>
+          <a class="ability-card model-card" href="/plugins/youdao/model">
+            <div class="tool-badge green"><span>AI</span></div>
+            <div>
+              <h3>模型翻译</h3>
+              <p>使用 Lite 或 Pro 模型，可添加提示词控制译文风格。</p>
+            </div>
+            <i data-lucide="chevron-right"></i>
+          </a>
+          <a class="ability-card language-card" href="/plugins/youdao/languages">
+            <div class="tool-badge orange"><span>文</span></div>
+            <div>
+              <h3>语言列表</h3>
+              <p>以卡片方式查看普通翻译和模型翻译支持的语言。</p>
+            </div>
+            <i data-lucide="chevron-right"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -86,9 +86,7 @@ LANGUAGE_ALIASES: dict[str, str] = {
 
 MODEL_OPTIONS: dict[str, str] = {
     "lite": "3",
-    "3": "3",
     "pro": "0",
-    "0": "0",
 }
 
 
@@ -109,5 +107,5 @@ def normalize_language(value: str, language_names: dict[str, str]) -> str:
 def normalize_model(value: str) -> str:
     model = MODEL_OPTIONS.get(value.strip().lower())
     if not model:
-        raise ValueError("model must be 'lite', 'pro', '3', or '0'")
+        raise ValueError("model must be 'lite' or 'pro'")
     return model

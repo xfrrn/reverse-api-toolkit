@@ -10,6 +10,18 @@ from services.youdao.models.results import TextTranslationResult
 class TextTranslateInterface:
     text_translate_endpoint = TEXT_TRANSLATE_ENDPOINT
     text_language_names = TEXT_LANGUAGE_NAMES
+    text_supported_directions = [
+        *[
+            {"label": f"中文 » {name}", "source": "zh-CHS", "target": code}
+            for code, name in TEXT_LANGUAGE_NAMES.items()
+            if code not in {"auto", "zh-CHS"}
+        ],
+        *[
+            {"label": f"{name} » 中文", "source": code, "target": "zh-CHS"}
+            for code, name in TEXT_LANGUAGE_NAMES.items()
+            if code not in {"auto", "zh-CHS"}
+        ],
+    ]
 
     @classmethod
     def validate_text_pair(cls, source: str, target: str) -> None:
@@ -37,8 +49,8 @@ class TextTranslateInterface:
         text = text.strip()
         if not text:
             raise ValueError("text cannot be empty")
-        if len(text) > 1000:
-            raise ValueError("the text translation web demo limits text to 1000 characters")
+        if len(text) > 800:
+            raise ValueError("the text translation web demo limits text to 800 characters")
 
         payload = post_form_json(
             cls.text_translate_endpoint,

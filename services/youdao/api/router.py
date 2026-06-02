@@ -16,9 +16,10 @@ router = APIRouter(prefix="/youdao", tags=["youdao"])
 
 
 @router.get("/languages")
-def languages() -> dict[str, dict[str, str]]:
+def languages() -> dict[str, object]:
     return {
         "text_translate": TextTranslateInterface.text_language_names,
+        "text_translate_directions": TextTranslateInterface.text_supported_directions,
         "model_translate": ModelTranslateInterface.model_language_names,
     }
 

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>帮大忙 - 插件中心</title>
+    <link rel="stylesheet" href="/static/assets/css/common.css" />
+    <link rel="stylesheet" href="/static/assets/css/catalog.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="/static/assets/js/catalog.js" defer></script>
+  </head>
+  <body>
+    <aside class="sidebar" aria-label="插件分类">
+      <a class="brand" href="/">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <h1>帮大忙</h1>
+          <p>在线插件工具箱</p>
+        </div>
+      </a>
+
+      <nav class="category-list">
+        <button class="category is-active" type="button" data-category="全部">
+          <i data-lucide="layout-grid"></i>
+          <span>全部</span>
+        </button>
+        <button class="category" type="button" data-category="图片工具">
+          <i data-lucide="image"></i>
+          <span>图片工具</span>
+        </button>
+        <button class="category" type="button" data-category="PDF转换工具">
+          <i data-lucide="file-type"></i>
+          <span>PDF转换工具</span>
+        </button>
+        <button class="category" type="button" data-category="数据换算工具">
+          <i data-lucide="calculator"></i>
+          <span>数据换算工具</span>
+        </button>
+        <button class="category" type="button" data-category="生活娱乐工具">
+          <i data-lucide="party-popper"></i>
+          <span>生活娱乐工具</span>
+        </button>
+        <button class="category" type="button" data-category="教育工具">
+          <i data-lucide="school"></i>
+          <span>教育工具</span>
+        </button>
+        <button class="category" type="button" data-category="文本工具">
+          <i data-lucide="file-text"></i>
+          <span>文本工具</span>
+        </button>
+        <button class="category" type="button" data-category="文档转换工具">
+          <i data-lucide="files"></i>
+          <span>文档转换工具</span>
+        </button>
+        <button class="category" type="button" data-category="开发工具">
+          <i data-lucide="terminal-square"></i>
+          <span>开发工具</span>
+        </button>
+        <button class="category" type="button" data-category="视频工具">
+          <i data-lucide="circle-play"></i>
+          <span>视频工具</span>
+        </button>
+        <button class="category" type="button" data-category="浏览器插件">
+          <i data-lucide="puzzle"></i>
+          <span>浏览器插件</span>
+        </button>
+      </nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <label class="search-box">
+          <i data-lucide="search"></i>
+          <input id="searchInput" type="search" placeholder="搜索插件" />
+        </label>
+        <div class="top-actions">
+          <button class="icon-button" type="button" title="分享">
+            <i data-lucide="share-2"></i>
+          </button>
+          <button class="benefit-button" type="button">
+            <i data-lucide="badge-check"></i>
+            <span>帮大忙 · 插件中心</span>
+          </button>
+          <button class="avatar" type="button" title="用户中心">
+            <i data-lucide="user"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <p>插件中心</p>
+          <h2>选择插件后进入独立使用页面</h2>
+        </div>
+        <div class="quick-stats" aria-label="插件概览">
+          <div>
+            <strong>1</strong>
+            <span>已接入插件</span>
+          </div>
+          <div>
+            <strong>文本</strong>
+            <span>当前分类</span>
+          </div>
+          <div>
+            <strong>API</strong>
+            <span>后端能力</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog-panel">
+        <div class="panel-title">
+          <div>
+            <p id="categoryEyebrow">全部插件</p>
+            <h2 id="categoryTitle">插件展示</h2>
+          </div>
+        </div>
+        <div class="plugin-grid" id="pluginGrid" aria-label="插件列表"></div>
+      </section>
+    </main>
+
+    <div class="float-actions" aria-label="快捷操作">
+      <button type="button" title="回到顶部" id="backTop"><i data-lucide="chevrons-up"></i></button>
+      <button type="button" title="通知"><i data-lucide="bell"></i></button>
+      <button type="button">共建</button>
+      <button type="button">反馈</button>
+    </div>
+  </body>
+</html>
