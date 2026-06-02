@@ -1,148 +1,34 @@
+const ALL_CATEGORY = "全部";
+const TEXT_CATEGORY = "文本工具";
+
 const tools = [
   {
     title: "有道普通翻译",
     desc: "支持文本翻译、自动检测和多语言互译",
-    category: "翻译工具",
+    category: TEXT_CATEGORY,
     badge: "译",
     color: "blue",
     action: "text",
-    tag: "权益卡",
   },
   {
     title: "有道模型翻译",
     desc: "支持 Lite / Pro 模型和流式翻译结果",
-    category: "翻译工具",
+    category: TEXT_CATEGORY,
     badge: "AI",
     color: "green",
     action: "model",
-    tag: "NEW",
   },
   {
     title: "翻译语言列表",
     desc: "查看当前接口支持的文本和模型语言",
-    category: "翻译工具",
+    category: TEXT_CATEGORY,
     badge: "文",
     color: "orange",
     action: "languages",
   },
-  {
-    title: "PDF转Word",
-    desc: "PDF转Word是一款高效的文档处理工具",
-    category: "PDF转换工具",
-    badge: "W",
-    color: "blue",
-    tag: "权益卡",
-  },
-  {
-    title: "PDF转Excel",
-    desc: "PDF转Excel是一款高效的文档处理工具",
-    category: "PDF转换工具",
-    badge: "X",
-    color: "green",
-    tag: "权益卡",
-  },
-  {
-    title: "PDF转HTML",
-    desc: "PDF图片转HTML是一款功能强大的工具",
-    category: "PDF转换工具",
-    badge: "H",
-    color: "red",
-  },
-  {
-    title: "PDF转图片",
-    desc: "PDF转图片工具是一款专业的在线转换工具",
-    category: "PDF转换工具",
-    badge: "图",
-    color: "blue",
-  },
-  {
-    title: "PDF转PPT",
-    desc: "PDF转PPT工具是一款用户友好的在线工具",
-    category: "PDF转换工具",
-    badge: "P",
-    color: "orange",
-    tag: "权益卡",
-  },
-  {
-    title: "Word转PDF",
-    desc: "Word转PDF是一款用户友好的在线转换工具",
-    category: "文档转换工具",
-    badge: "W",
-    color: "red",
-  },
-  {
-    title: "Word格式转换",
-    desc: "Word格式转换是一款功能强大的文本工具",
-    category: "文档转换工具",
-    badge: "W",
-    color: "blue",
-  },
-  {
-    title: "PPT格式转换",
-    desc: "PPT格式转换是一款功能强大的幻灯片工具",
-    category: "文档转换工具",
-    badge: "P",
-    color: "orange",
-  },
-  {
-    title: "文本格式化",
-    desc: "整理空格、换行、大小写和常用文本格式",
-    category: "文本工具",
-    badge: "T",
-    color: "green",
-  },
-  {
-    title: "JSON格式化",
-    desc: "开发调试中常用的数据格式化工具",
-    category: "开发工具",
-    badge: "{}",
-    color: "blue",
-  },
-  {
-    title: "数据换算",
-    desc: "长度、重量、时间等单位快速换算",
-    category: "数据换算工具",
-    badge: "算",
-    color: "green",
-  },
-  {
-    title: "学习工具",
-    desc: "作业辅导、词句理解和学习资料处理",
-    category: "教育工具",
-    badge: "学",
-    color: "blue",
-  },
-  {
-    title: "图片压缩",
-    desc: "图片压缩是一款轻量级图片处理工具",
-    category: "图片工具",
-    badge: "图",
-    color: "blue",
-  },
-  {
-    title: "证件照生成",
-    desc: "相片生成证件照工具，适合常用尺寸",
-    category: "生活娱乐工具",
-    badge: "证",
-    color: "blue",
-  },
-  {
-    title: "浏览器插件",
-    desc: "把常用能力接入浏览器右键与工具栏",
-    category: "浏览器插件",
-    badge: "件",
-    color: "orange",
-  },
-  {
-    title: "在线录屏",
-    desc: "在线录屏，支持录制指定窗口和屏幕",
-    category: "视频工具",
-    badge: "播",
-    color: "red",
-  },
 ];
 
-let activeCategory = "全部";
+let activeCategory = ALL_CATEGORY;
 let activeMode = "text";
 
 const latestTools = document.querySelector("#latestTools");
@@ -191,7 +77,6 @@ function makeToolCard(tool) {
   button.className = "tool-card";
   button.type = "button";
   button.innerHTML = `
-    ${tool.tag ? `<span class="ribbon ${tool.tag === "NEW" ? "orange" : ""}">${tool.tag}</span>` : ""}
     ${makeBadge(tool)}
     <div>
       <h3>${tool.title}</h3>
@@ -202,20 +87,30 @@ function makeToolCard(tool) {
   return button;
 }
 
-function renderTools() {
+function makeEmptyState() {
+  const empty = document.createElement("div");
+  empty.className = "empty-state";
+  empty.textContent = "该分类暂无已接入工具。";
+  return empty;
+}
+
+function getFilteredTools() {
   const query = searchInput.value.trim().toLowerCase();
-  const filtered = tools.filter((tool) => {
-    const categoryMatch = activeCategory === "全部" || tool.category === activeCategory;
+  return tools.filter((tool) => {
+    const categoryMatch = activeCategory === ALL_CATEGORY || tool.category === activeCategory;
     const queryMatch = !query || `${tool.title}${tool.desc}${tool.category}`.toLowerCase().includes(query);
     return categoryMatch && queryMatch;
   });
+}
 
-  toolGrid.replaceChildren(...filtered.map(makeToolCard));
+function renderTools() {
+  const filtered = getFilteredTools();
+  toolGrid.replaceChildren(...(filtered.length ? filtered.map(makeToolCard) : [makeEmptyState()]));
 }
 
 function renderFeatured() {
-  latestTools.replaceChildren(...tools.slice(0, 3).map(makeFeaturedTool));
-  hotTools.replaceChildren(...tools.slice(15, 18).map(makeFeaturedTool));
+  latestTools.replaceChildren(...tools.map(makeFeaturedTool));
+  hotTools.replaceChildren(...tools.map(makeFeaturedTool));
 }
 
 function setMode(mode) {
@@ -239,11 +134,7 @@ function openTool(tool) {
   if (tool.action === "languages") {
     loadLanguages();
     document.querySelector("#translator").scrollIntoView({ behavior: "smooth", block: "start" });
-    return;
   }
-
-  statusText.textContent = `${tool.title} 暂未接入后端接口。`;
-  document.querySelector("#translator").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function updateCharCount() {

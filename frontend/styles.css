@@ -572,6 +572,18 @@ output {
   margin: 0 auto;
 }
 
+.empty-state {
+  grid-column: 1 / -1;
+  min-height: 110px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--muted);
+  box-shadow: var(--shadow);
+  font-size: 17px;
+}
+
 .tool-card {
   position: relative;
   display: flex;
