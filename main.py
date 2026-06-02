@@ -9,6 +9,9 @@ app = FastAPI(
     title="Translation Request Wrapper",
     description="Categorized wrappers for captured translation network requests.",
     version="0.1.0",
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
 )
 app.include_router(youdao_router)
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
