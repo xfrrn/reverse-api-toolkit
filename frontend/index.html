@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>帮小忙 - 在线工具箱</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <aside class="sidebar" aria-label="工具分类">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <h1>帮小忙</h1>
+          <p>在线翻译与效率工具箱</p>
+        </div>
+      </div>
+
+      <nav class="category-list">
+        <button class="category is-active" type="button" data-category="全部">
+          <i data-lucide="layout-grid"></i>
+          <span>全部</span>
+        </button>
+        <button class="category" type="button" data-category="图片工具">
+          <i data-lucide="image"></i>
+          <span>图片工具</span>
+        </button>
+        <button class="category" type="button" data-category="PDF转换工具">
+          <i data-lucide="file-type"></i>
+          <span>PDF转换工具</span>
+        </button>
+        <button class="category" type="button" data-category="数据换算工具">
+          <i data-lucide="calculator"></i>
+          <span>数据换算工具</span>
+        </button>
+        <button class="category" type="button" data-category="生活娱乐工具">
+          <i data-lucide="party-popper"></i>
+          <span>生活娱乐工具</span>
+        </button>
+        <button class="category" type="button" data-category="教育工具">
+          <i data-lucide="school"></i>
+          <span>教育工具</span>
+        </button>
+        <button class="category" type="button" data-category="文本工具">
+          <i data-lucide="file-text"></i>
+          <span>文本工具</span>
+        </button>
+        <button class="category" type="button" data-category="文档转换工具">
+          <i data-lucide="files"></i>
+          <span>文档转换工具</span>
+        </button>
+        <button class="category" type="button" data-category="开发工具">
+          <i data-lucide="terminal-square"></i>
+          <span>开发工具</span>
+        </button>
+        <button class="category" type="button" data-category="视频工具">
+          <i data-lucide="circle-play"></i>
+          <span>视频工具</span>
+        </button>
+        <button class="category" type="button" data-category="浏览器插件">
+          <i data-lucide="puzzle"></i>
+          <span>浏览器插件</span>
+        </button>
+      </nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <label class="search-box">
+          <i data-lucide="search"></i>
+          <input id="searchInput" type="search" placeholder="工具箱已累计帮助了 372368808 人次" />
+        </label>
+        <div class="top-actions">
+          <button class="icon-button" type="button" title="分享">
+            <i data-lucide="share-2"></i>
+          </button>
+          <button class="benefit-button" type="button">
+            <i data-lucide="badge-check"></i>
+            <span>QQ浏览器 · 工具权益卡</span>
+          </button>
+          <button class="avatar" type="button" title="用户中心">
+            <i data-lucide="user"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <p>有道翻译 API 控制台</p>
+          <h2>把常用翻译请求做成顺手的在线工具</h2>
+        </div>
+        <div class="quick-stats" aria-label="接口概览">
+          <div>
+            <strong>2</strong>
+            <span>翻译接口</span>
+          </div>
+          <div>
+            <strong>1000</strong>
+            <span>普通翻译字符</span>
+          </div>
+          <div>
+            <strong>SSE</strong>
+            <span>流式模型翻译</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-row">
+        <article class="showcase-card">
+          <div class="section-title">
+            <h2>最新工具</h2>
+            <button type="button">更多工具 <i data-lucide="chevron-right"></i></button>
+          </div>
+          <div class="featured-tools" id="latestTools"></div>
+        </article>
+        <article class="showcase-card">
+          <div class="section-title">
+            <h2>最热工具</h2>
+            <button type="button">更多工具 <i data-lucide="chevron-right"></i></button>
+          </div>
+          <div class="featured-tools" id="hotTools"></div>
+        </article>
+      </section>
+
+      <section class="translator-shell" id="translator">
+        <div class="translator-header">
+          <div>
+            <p>当前工具</p>
+            <h2 id="activeToolTitle">有道普通翻译</h2>
+          </div>
+          <div class="mode-tabs" role="tablist" aria-label="翻译模式">
+            <button class="is-active" type="button" data-mode="text">普通翻译</button>
+            <button type="button" data-mode="model">模型翻译</button>
+          </div>
+        </div>
+
+        <div class="translator-grid">
+          <div class="input-panel">
+            <div class="field-row">
+              <label>
+                源语言
+                <select id="sourceLang">
+                  <option value="auto">自动检测</option>
+                  <option value="zh-CHS">中文</option>
+                  <option value="en">英语</option>
+                  <option value="ja">日语</option>
+                  <option value="ko">韩语</option>
+                  <option value="fr">法语</option>
+                  <option value="de">德语</option>
+                </select>
+              </label>
+              <button class="swap-button" id="swapLang" type="button" title="交换语言">
+                <i data-lucide="arrow-left-right"></i>
+              </button>
+              <label>
+                目标语言
+                <select id="targetLang">
+                  <option value="zh-CHS">中文</option>
+                  <option value="en" selected>英语</option>
+                  <option value="ja">日语</option>
+                  <option value="ko">韩语</option>
+                  <option value="fr">法语</option>
+                  <option value="de">德语</option>
+                </select>
+              </label>
+            </div>
+            <textarea id="sourceText" maxlength="1000" placeholder="输入要翻译的内容">你好，欢迎使用在线工具箱。</textarea>
+            <div class="model-options" id="modelOptions" hidden>
+              <label>
+                模型
+                <select id="modelName">
+                  <option value="lite">Lite</option>
+                  <option value="pro">Pro</option>
+                  <option value="3">模型 3</option>
+                  <option value="0">模型 0</option>
+                </select>
+              </label>
+              <label>
+                提示词
+                <input id="promptText" type="text" placeholder="例如：翻译得更自然、口语化" />
+              </label>
+            </div>
+            <div class="submit-row">
+              <span id="charCount">0 / 1000</span>
+              <button class="primary-button" id="translateButton" type="button">
+                <i data-lucide="sparkles"></i>
+                <span>开始翻译</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="result-panel">
+            <div class="result-title">
+              <span>翻译结果</span>
+              <button class="icon-button small" id="copyResult" type="button" title="复制结果">
+                <i data-lucide="copy"></i>
+              </button>
+            </div>
+            <output id="resultOutput">点击开始翻译后，结果会显示在这里。</output>
+            <p id="statusText" class="status-text"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="tool-grid" id="toolGrid" aria-label="工具列表"></section>
+    </main>
+
+    <div class="float-actions" aria-label="快捷操作">
+      <button type="button" title="回到顶部" id="backTop"><i data-lucide="chevrons-up"></i></button>
+      <button type="button" title="通知"><i data-lucide="bell"></i></button>
+      <button type="button">共建</button>
+      <button type="button">反馈</button>
+    </div>
+  </body>
+</html>
