@@ -16,9 +16,6 @@ app = FastAPI(
 )
 app.include_router(snapany_router)
 app.include_router(youdao_router)
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
-
-
 @app.get("/")
 def index() -> FileResponse:
     return FileResponse("frontend/pages/index.html")
@@ -57,3 +54,7 @@ def snapany_video_parse_plugin() -> FileResponse:
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+# Must be last — FastAPI matches routes in order. Explicit routes first, static fallback last.
+app.mount("/", StaticFiles(directory="frontend"), name="static")

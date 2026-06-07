@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "frontend/pages/plugins/youdao/model.html",
+  "entry": "frontend/pages/plugins/youdao/model.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-07T12:35:00.914Z",
+  "updatedAt": "2026-06-07T12:35:00.914Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

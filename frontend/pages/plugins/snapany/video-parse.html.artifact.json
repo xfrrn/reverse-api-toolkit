@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "frontend/pages/plugins/snapany/video-parse.html",
+  "entry": "frontend/pages/plugins/snapany/video-parse.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-07T12:35:03.156Z",
+  "updatedAt": "2026-06-07T12:35:03.156Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

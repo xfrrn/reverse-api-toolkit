@@ -1,95 +1,113 @@
-.catalog-panel {
-  max-width: 1334px;
-  margin: 0 auto;
-  padding: 26px;
-  border-radius: var(--radius);
-  background: var(--panel);
-  box-shadow: var(--shadow);
-}
+/* ── Catalog panel ── (extends common.css .catalog-panel) */
 
-.panel-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 22px;
+.catalog-panel {
+  /* border + padding + max-width already in common.css */
 }
 
 .panel-title h2 {
-  margin: 0;
-  font-size: 24px;
-  letter-spacing: 0;
+  font-size: 18px;
+  font-weight: 700;
 }
 
+.panel-title p {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 6px;
+}
+
+/* ── Plugin grid ── */
 .plugin-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 34px;
+  gap: 18px;
 }
 
+/* ── Plugin card ── */
 .plugin-card {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 150px;
-  gap: 20px;
+  min-height: 140px;
+  gap: 16px;
   border-radius: var(--radius);
-  background: var(--panel);
-  padding: 24px;
-  box-shadow: inset 0 0 0 1px var(--line), 0 8px 22px rgba(24, 35, 58, 0.06);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 20px;
   text-align: left;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .plugin-card:hover {
-  transform: translateY(-2px);
-  box-shadow: inset 0 0 0 1px #dce5f5, 0 12px 30px rgba(24, 35, 58, 0.12);
+  border-color: var(--accent-muted);
+  box-shadow: 0 2px 12px oklch(0% 0 0 / 0.06);
+  transform: translateY(-1px);
+}
+
+.plugin-card > div {
+  min-width: 0;
 }
 
 .plugin-card h3 {
-  margin: 0 0 9px;
-  font-size: 22px;
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
   letter-spacing: 0;
-}
-
-.plugin-card p {
-  margin: 0;
-  max-width: 290px;
   overflow: hidden;
-  color: var(--muted);
-  font-size: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+.plugin-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
 .plugin-category {
   display: inline-flex;
-  margin-top: 12px;
+  margin-top: 10px;
   border-radius: 999px;
-  padding: 5px 10px;
-  background: var(--primary-soft);
-  color: var(--primary-deep);
-  font-size: 13px;
+  padding: 4px 10px;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  font-size: 12px;
   font-weight: 700;
+  font-family: var(--font-mono);
 }
 
 .plugin-arrow {
   margin-left: auto;
-  width: 24px;
-  height: 24px;
-  color: #a2a9b6;
+  width: 20px;
+  height: 20px;
+  color: var(--muted);
+  flex-shrink: 0;
 }
 
+/* ── Empty state ── */
 .empty-state {
   grid-column: 1 / -1;
-  min-height: 140px;
+  min-height: 120px;
   display: grid;
   place-items: center;
   border-radius: var(--radius);
-  background: #fbfcff;
+  background: var(--bg);
+  border: 1px dashed var(--border);
   color: var(--muted);
-  box-shadow: inset 0 0 0 1px var(--line);
-  font-size: 17px;
+  font-size: 15px;
+  font-family: var(--font-mono);
 }
 
+/* ── Responsive ── */
 @media (max-width: 980px) {
   .plugin-grid {
     grid-template-columns: 1fr;
