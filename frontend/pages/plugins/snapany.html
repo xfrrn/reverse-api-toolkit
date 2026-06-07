@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>视频解析 - 帮大忙</title>
+    <link rel="stylesheet" href="/static/assets/css/common.css" />
+    <link rel="stylesheet" href="/static/assets/css/plugin-snapany.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="/static/assets/js/plugins/snapany-home.js" defer></script>
+  </head>
+  <body>
+    <aside class="sidebar" aria-label="插件分类">
+      <a class="brand" href="/">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <h1>帮大忙</h1>
+          <p>在线插件工具箱</p>
+        </div>
+      </a>
+      <nav class="category-list">
+        <a class="category" href="/"><i data-lucide="layout-grid"></i><span>全部</span></a>
+        <a class="category is-active" href="/?category=视频工具"><i data-lucide="circle-play"></i><span>视频工具</span></a>
+      </nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar detail-topbar">
+        <a class="secondary-button" href="/">
+          <i data-lucide="arrow-left"></i>
+          <span>返回插件中心</span>
+        </a>
+        <div class="top-actions">
+          <button class="benefit-button" type="button">
+            <i data-lucide="badge-check"></i>
+            <span>视频解析 · 视频工具</span>
+          </button>
+          <button class="avatar" type="button" title="用户中心">
+            <i data-lucide="user"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="hero-panel snapany-hero">
+        <div class="hero-copy">
+          <p>视频解析插件</p>
+          <h2>提取多平台视频链接里的媒体资源</h2>
+        </div>
+        <div class="quick-stats" aria-label="插件能力">
+          <div><strong>抖音</strong><span>短视频</span></div>
+          <div><strong>YouTube</strong><span>海外视频</span></div>
+          <div><strong>B 站</strong><span>视频资源</span></div>
+        </div>
+      </section>
+
+      <section class="ability-panel">
+        <div class="panel-title">
+          <div>
+            <p>能力入口</p>
+            <h2>视频解析工具</h2>
+          </div>
+        </div>
+        <div class="ability-grid single-ability">
+          <a class="ability-card parse-card" href="/plugins/snapany/video-parse">
+            <div class="tool-badge"><span>播</span></div>
+            <div>
+              <h3>视频解析</h3>
+              <p>输入视频链接，返回标题、媒体类型和资源地址。</p>
+            </div>
+            <i data-lucide="chevron-right"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

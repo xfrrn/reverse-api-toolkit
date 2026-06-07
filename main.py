@@ -2,17 +2,19 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from services.snapany.api import router as snapany_router
 from services.youdao.api import router as youdao_router
 
 
 app = FastAPI(
-    title="Translation Request Wrapper",
-    description="Categorized wrappers for captured translation network requests.",
+    title="Reverse API Toolkit",
+    description="Categorized wrappers for captured network requests.",
     version="0.1.0",
     docs_url=None,
     redoc_url=None,
     openapi_url=None,
 )
+app.include_router(snapany_router)
 app.include_router(youdao_router)
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
@@ -40,6 +42,16 @@ def youdao_model_plugin() -> FileResponse:
 @app.get("/plugins/youdao/languages")
 def youdao_languages_plugin() -> FileResponse:
     return FileResponse("frontend/pages/plugins/youdao/languages.html")
+
+
+@app.get("/plugins/snapany")
+def snapany_plugin() -> FileResponse:
+    return FileResponse("frontend/pages/plugins/snapany.html")
+
+
+@app.get("/plugins/snapany/video-parse")
+def snapany_video_parse_plugin() -> FileResponse:
+    return FileResponse("frontend/pages/plugins/snapany/video-parse.html")
 
 
 @app.get("/health")

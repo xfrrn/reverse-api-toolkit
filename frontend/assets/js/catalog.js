@@ -1,5 +1,6 @@
 const ALL_CATEGORY = "全部";
 const TEXT_CATEGORY = "文本工具";
+const VIDEO_CATEGORY = "视频工具";
 
 const plugins = [
   {
@@ -9,6 +10,14 @@ const plugins = [
     badge: "译",
     color: "blue",
     url: "/plugins/youdao",
+  },
+  {
+    title: "视频解析",
+    desc: "解析抖音、YouTube、B 站等视频链接并返回可用媒体资源",
+    category: VIDEO_CATEGORY,
+    badge: "播",
+    color: "green",
+    url: "/plugins/snapany",
   },
 ];
 

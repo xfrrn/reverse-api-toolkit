@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>视频解析 - 帮大忙</title>
+    <link rel="stylesheet" href="/static/assets/css/common.css" />
+    <link rel="stylesheet" href="/static/assets/css/plugin-snapany.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="/static/assets/js/plugins/snapany/video-parse.js" defer></script>
+  </head>
+  <body class="video-parse-page">
+    <aside class="sidebar" aria-label="插件分类">
+      <a class="brand" href="/"><div class="brand-mark" aria-hidden="true"></div><div><h1>帮大忙</h1><p>在线插件工具箱</p></div></a>
+      <nav class="category-list">
+        <a class="category" href="/"><i data-lucide="layout-grid"></i><span>全部</span></a>
+        <a class="category is-active" href="/?category=视频工具"><i data-lucide="circle-play"></i><span>视频工具</span></a>
+      </nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar detail-topbar">
+        <a class="secondary-button" href="/plugins/snapany"><i data-lucide="arrow-left"></i><span>返回视频解析</span></a>
+        <div class="top-actions">
+          <a class="capability-link is-active" href="/plugins/snapany/video-parse">视频解析</a>
+        </div>
+      </header>
+
+      <section class="hero-panel parse-hero">
+        <div class="hero-copy">
+          <p>视频解析</p>
+          <h2>把视频分享链接整理成可查看的媒体资源</h2>
+        </div>
+        <div class="quick-stats"><div><strong>REST</strong><span>解析接口</span></div><div><strong>zh</strong><span>默认语言</span></div><div><strong>UTC+8</strong><span>默认时区</span></div></div>
+      </section>
+
+      <section class="parser-shell">
+        <div class="parser-header"><div><p>输入链接</p><h2>视频解析工作台</h2></div></div>
+        <div class="parser-grid">
+          <div class="input-panel">
+            <label class="link-field">
+              <span>视频链接</span>
+              <textarea id="videoLink" placeholder="https://www.youtube.com/watch?v=..." spellcheck="false"></textarea>
+            </label>
+            <div class="options-row">
+              <label>语言<select id="localeSelect"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label>
+              <label>时区<input id="timezoneInput" type="text" value="Asia/Shanghai" /></label>
+            </div>
+            <div class="submit-row"><span id="statusText"></span><button class="primary-button" id="parseButton" type="button"><i data-lucide="wand-sparkles"></i><span>开始解析</span></button></div>
+          </div>
+          <div class="result-panel">
+            <div class="result-title"><span>解析结果</span><button class="icon-button small" id="copySummary" type="button" title="复制摘要"><i data-lucide="copy"></i></button></div>
+            <div id="resultOutput" class="result-output empty-result">等待解析结果</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
