@@ -51,6 +51,16 @@ def snapany_video_parse_plugin() -> FileResponse:
     return FileResponse("frontend/pages/plugins/snapany/video-parse.html")
 
 
+@app.get("/plugins/devtools")
+def devtools_plugin() -> FileResponse:
+    return FileResponse("frontend/pages/plugins/devtools.html")
+
+
+@app.get("/plugins/devtools/api-tester")
+def devtools_api_tester_plugin() -> FileResponse:
+    return FileResponse("frontend/pages/plugins/devtools/api-tester.html")
+
+
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}

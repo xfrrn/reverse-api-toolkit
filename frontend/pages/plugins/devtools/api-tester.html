@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>API 端点测试 - 帮大忙</title>
+    <link rel="stylesheet" href="../../../assets/css/common.css" />
+    <link rel="stylesheet" href="../../../assets/css/plugin-devtools.css" />
+    <script
+      src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"
+      defer
+    ></script>
+    <script
+      src="../../../assets/js/plugins/devtools/api-tester.js"
+      defer
+    ></script>
+  </head>
+  <body class="api-tester-page">
+    <aside class="sidebar" aria-label="插件分类">
+      <a class="brand" href="/"
+        ><div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <h1>帮大忙</h1>
+          <p>在线插件工具箱</p>
+        </div></a
+      >
+      <nav class="category-list">
+        <a class="category" href="/"
+          ><i data-lucide="layout-grid"></i><span>全部</span></a
+        >
+        <a class="category is-active" href="/?category=开发工具"
+          ><i data-lucide="terminal-square"></i><span>开发工具</span></a
+        >
+      </nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar detail-topbar">
+        <a class="secondary-button" href="/plugins/devtools"
+          ><i data-lucide="arrow-left"></i><span>返回开发工具</span></a
+        >
+        <div class="top-actions">
+          <span class="privacy-badge"
+            ><i data-lucide="shield-check"></i
+            ><span>数据不上传服务器</span></span
+          >
+          <a
+            class="capability-link is-active"
+            href="/plugins/devtools/api-tester"
+            >API 端点测试</a
+          >
+        </div>
+      </header>
+
+      <section class="hero-panel devtools-hero">
+        <div class="hero-copy">
+          <p>API 端点测试</p>
+          <h2>一键检测 REST API 的连通性与响应数据</h2>
+        </div>
+        <div class="quick-stats">
+          <div><strong>OpenAI</strong><span>格式兼容</span></div>
+          <div><strong>Claude</strong><span>格式兼容</span></div>
+          <div><strong>通用</strong><span>自定义请求</span></div>
+        </div>
+      </section>
+
+      <section class="parser-shell">
+        <div class="parser-header">
+          <div>
+            <p>请求配置</p>
+            <h2>API 端点测试工作台</h2>
+          </div>
+        </div>
+
+        <div class="quick-endpoints" id="quickEndpoints">
+          <button class="quick-endpoint" data-preset="openai">OpenAI</button>
+          <button class="quick-endpoint" data-preset="claude">Anthropic</button>
+          <button class="quick-endpoint" data-preset="custom">自定义</button>
+        </div>
+
+        <div class="parser-grid">
+          <div class="input-panel">
+            <div class="config-stack">
+              <label
+                >请求 URL <span class="url-suffix-hint" id="urlSuffixHint"></span
+                ><input
+                  id="apiUrl"
+                  type="text"
+                  placeholder="https://api.openai.com/v1"
+                  spellcheck="false"
+              /></label>
+              <label
+                >API Key<input
+                  id="apiKey"
+                  type="text"
+                  placeholder="sk-..."
+                  spellcheck="false"
+              /></label>
+              <div class="config-row">
+                <label
+                  >模型<input
+                    id="modelInput"
+                    type="text"
+                    list="modelList"
+                    placeholder="选择或输入模型名称…"
+                    spellcheck="false"
+                    autocomplete="off" /><datalist id="modelList"></datalist
+                ></label>
+                <label
+                  >超时(秒)<input id="timeout" type="text" value="30"
+                /></label>
+              </div>
+
+              <details class="fold-section" id="headersSection">
+                <summary class="fold-summary">
+                  Headers 模板<span class="fold-hint"
+                    >已自动填充，可展开修改</span
+                  >
+                </summary>
+                <textarea
+                  id="customHeaders"
+                  placeholder='{"Content-Type": "application/json"}'
+                  spellcheck="false"
+                ></textarea>
+              </details>
+
+              <details class="fold-section" id="bodySection">
+                <summary class="fold-summary">
+                  Body 模板<span class="fold-hint">已自动填充，选模型即可</span>
+                </summary>
+                <textarea
+                  id="requestBody"
+                  placeholder='{"model": "gpt-4o", "messages": [{"role": "user", "content": "ping"}]}'
+                  spellcheck="false"
+                ></textarea>
+              </details>
+
+              <div class="submit-row">
+                <span id="statusText"></span
+                ><button class="primary-button" id="testButton" type="button">
+                  <i data-lucide="zap"></i><span>发送测试</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="result-panel">
+            <div class="result-title">
+              <span>响应结果</span>
+              <div style="display: flex; gap: 6px">
+                <button
+                  class="icon-button small"
+                  id="copyResponse"
+                  type="button"
+                  title="复制响应"
+                >
+                  <i data-lucide="copy"></i>
+                </button>
+                <button
+                  class="icon-button small"
+                  id="clearResponse"
+                  type="button"
+                  title="清空结果"
+                >
+                  <i data-lucide="trash-2"></i>
+                </button>
+              </div>
+            </div>
+            <div id="resultOutput" class="result-output empty-result">
+              等待测试请求
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

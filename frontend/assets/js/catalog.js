@@ -1,6 +1,7 @@
 const ALL_CATEGORY = "全部";
 const TEXT_CATEGORY = "文本工具";
 const VIDEO_CATEGORY = "视频工具";
+const DEVTOOLS_CATEGORY = "开发工具";
 
 const plugins = [
   {
@@ -18,6 +19,14 @@ const plugins = [
     badge: "播",
     color: "green",
     url: "/plugins/snapany",
+  },
+  {
+    title: "API 端点测试",
+    desc: "测试 OpenAI、Claude 及自定义 API 的连通性，数据不上传服务器",
+    category: DEVTOOLS_CATEGORY,
+    badge: "测",
+    color: "green",
+    url: "/plugins/devtools",
   },
 ];
 
